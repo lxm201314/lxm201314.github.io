@@ -206,274 +206,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/18/软件设计原则v2/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-18T22:06:25+08:00" content="2016-03-18">
-              2016-03-18
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#序</p>
-<p>上次更新博客已是十四天前，这两个星期的时间，在下也没有懈怠，草草的看了一些软件设计的书，当昨天合上最后一本的时候，突然发现自己心里啥都没记住，难道我已经达到了学习的最高境界，心中无书胜有书，我完全在放屁。两个星期没更新了，箭在弦上，不得不发。虽然只是草草的看一遍或者一部分，但在过程中也作了一些笔记，这篇文章大部分也就是我笔记的内容，比较虚，比较空，等以后我更深入了解后，再做更深入的贡献！</p>
-<p>#读了什么书？</p>
-<p>人称软件设计三部曲的<strong>《设计模式》《重构》《重构与模式》</strong><br><strong>《设计模式》</strong>：如果一部电影豆瓣评分高达9分，你会不会看？那如果是一本书呢？</p>
-<p><img src="http://img2.tbcdn.cn/L1/461/1/87a45a8cf691145b1ba11bda92226c7c39a8ae32.png" alt="screenshot"></p>
-<p>深深的感受下amazon关于这本书有用度排名第一的评论：</p>
-<p><img src="http://img1.tbcdn.cn/L1/461/1/cc6c34dfc512576d2acb096b60a9f1947589b086.png" alt="screenshot"></p>
-<p>什么？没看懂！没关系，我是只拿这个来提高这篇文章的逼格用的，不过放心对于这本书几乎清一色的好评。</p>
-<p><strong>《重构》</strong>：豆瓣评分一样高达9.1分，和《设计模式》一样，</p>
-<p><img src="http://img4.tbcdn.cn/L1/461/1/51b89c69a2ef80cca653d8cac8c596af424e595a.png" alt="screenshot"></p>
-<p>有关于这本书的作者，就多说几句：</p>
-<p><strong>福勒（Martin Fowler）</strong>，在面向对象分析设计、UML、模式、软件开发方法学、XP、重构等方面，都是世界顶级的专家，现为Thought Works公司的首席科学家。Thought Works是一家从事企业应用开发和集成的公司。早在20世纪80年代，Fowler就是使用对象技术构建多层企业应用的倡导者，他著有几本经典书籍：《分析模式》、《UML精粹》和《重构》等。</p>
-<p><strong>《重构与模式》</strong>：看看为这本书做序的人你就知道这本书为什么值得一看了。</p>
-<p><img src="http://img4.tbcdn.cn/L1/461/1/d48895d731fd19b2017056a4762761abc0758e95.png" alt="screenshot"></p>
-<p><img src="http://img3.tbcdn.cn/L1/461/1/d1107a6bef95076df07532cd83a66a8d86007d3e.png" alt="screenshot"></p>
-<p><strong>重构是一个动作（小步快跑，持续迭代），模式是一个结果（呈现出合理使用设计模式的架构）</strong></p>
-<p>#什么是好书？<br>关于这点我在这两个星期也有点感悟。到底什么是好书!我个人认为：</p>
-<p>#####1. 从0到1，提出新的概念，新的思维，新的方案并成为大众所接受的书。</p>
-<p>#####2. 对实践经验进行全面深刻的总结，并能帮助大众解决实际问题的书。</p>
-<p>#####3. 启发式的书籍，在读的过程中给人一种醍醐灌顶，相见恨晚的感觉，这种书不一定给出具体的解决方案，但会影响读者思考问题的方式。</p>
-<p>#关键字</p>
-<p>##开闭</p>
-<p>说开闭原则是一切软件设计的终极目标一点也不为过，举个例子就是开闭原则就是宪法，而所有的法律法规的制定都要以宪法内容为基准，反过来如果所有法律法规内容和规范都执行的很好，也就达到了宪法的内容规定。所谓开闭原则指的是：对扩展开放，对修改封闭。如何理解开闭原则？</p>
-<p><img src="http://img2.tbcdn.cn/L1/461/1/1a0284e4e2e6a6148bb09b98fb14a558d27aabcf.png" alt="screenshot"></p>
-<p>如果程序中的一处改动就会产生连锁反应，导致一系列相关模块的改动，那么设计就显得特别僵化，开闭原则建议我们应该对系统进行重构，这样以后对系统再进行那样的改动时，就不会导致更多的修改。如果正确地应用开闭原则，那么以后再进行两样的改动时，就只需要添加新的代码，而不必改动已经正常运行的代码。</p>
-<p>开闭原则具有两个主要的特征：</p>
-<p><strong>1. 对扩展是开放的</strong><br> 这意味关模块的行为是可以扩展的，当应用的需求改变时，我们可以对模块进行扩展，使其具有满足那些改变的新行为。换句话说，我们可以改变模块的功能。</p>
-<p><strong>2. 对于更改是封闭的</strong><br> 对模块行为进行扩展时，不必改动模块的源代码，模块的二进制可执行版本，无论是可链接的库，DLL或者java的.jar文件，都无需改动。</p>
-<p>###抽象</p>
-<p>如何实现开闭原则，关键是抽象。抽象是我们控制软件复杂性的重要手段。</p>
-<p>要想达到对更改是封闭的，我们必须面向抽象编程;</p>
-<p>要想达到对扩展是开放的，我们必须抽象变化模块;</p>
-<p><img src="http://img2.tbcdn.cn/L1/461/1/5d1a7fda5d26d8ea1cd55c9d03e88ca5f78cda0d.png" alt="screenshot"></p>
-<p>左边展示了一个简单的不遵循开闭原则的设计。client类和server类都是具体类。client类使用server类，如果我们希望client对象使用另外一个不同的服务器对象，那么就必须要把client类中使用server类的地方 更改为新的服务器类。</p>
-<p>右边展示了一个针对上述问题的遵循开闭原则的设计，在这个设计中，clientInterface类是一个拥有抽象成员函数的抽象类。client类使用这个抽象类，然而client类的对象却使用server类的派生类的对象，如果我们希望client对象使用一个不同的服务器类，那么只需要从clientInterface类派生一个新的类，无需对client类做任何改动。这就做到了对扩展开放，对更改封闭。</p>
-<p>###依赖倒置</p>
-<p>据说所说，任何企业的架构归根结底都是按照某种形式的层次分层设计的。最经典的莫过于三层架构的系统，这这种方式下，在表现层实现用户界面，在领域层实现领域逻辑，在数据源层存取数据，这种方式使你可以将复杂的领域逻辑从界面代码中抽取出来，单独放到中间层，用对象加以建模和组织。</p>
-<p>如何将企业应用组织成不同的层次？以及这些层次之间如何协同工作？</p>
-<p>我觉得最重要策略或至少一定会用到依赖倒置的原则，这个原则恰恰是面向抽象编程以达到开闭原则的重要一步：</p>
-<p>依赖原则简单来说：</p>
-<p><strong>1.高层模块不应该依赖于低层模块，二者都应该依赖于抽象</strong><br><strong>2.抽象不应该依赖于细节，细节应该依赖于抽象</strong></p>
-<p><img src="http://img2.tbcdn.cn/L1/461/1/7926dc37db5999400dfe8c9714bb437e801191d7.png" alt="screenshot"></p>
-<p>上图中高层的policy layer使用了低层的mechanis layer，而mechanism layer又使用了更细节的层utility layer，这看起来似乎是正确的，但是policy layer对于其下一直到utility layer的改动都是敏感的，这种依赖关系是传递的。policy layer依赖于某些依赖于utility layer的层次：因此policy layer传递性地依赖于utility layer。</p>
-<p><img src="http://img4.tbcdn.cn/L1/461/1/ed821d9edff2da4270e408ebc39e957428beb99a.png" alt="screenshot"></p>
-<p>上图展示了一个更为合适的模型。第一个较高层次都为它所需要的服务声明一个抽象接口，较低的层次实现了这些抽象接口，每个高层类都通过该抽象接口使用下一层，这样高层就不依赖于低层，低层反而依赖于在高层中声明的抽象服务接口。这不仅解除了policy layer对于utility layer的传递依赖关系，甚至也解除了policy layer对于mechanism layer的依赖关系。</p>
-<p>##委托</p>
-<p>一个好的领导不一定知道一件事具体应该怎么做，但一定知道把什么样的事分委托给什么样的人去办，而且委托过程很简单，可能只是一句话，也可能只是面对一个人，就能把事情委托下去并且能办好。程序也是一样，客户端代码对服务或其他函数的调用方法一定是最简洁最明确的，客户端能一行代码完成功能的，绝不用二行代码，能用二行代码完成的，绝不用三行代码，要达到这样的目标必需要对被调用方进行数据封装，逻辑隔离，变化抽象等等，使用到的设计模式包括创建型模式和结构型模式。</p>
-<p>委托型的设计模式包括很多：典型的有：</p>
-<p><strong>适配器模式</strong></p>
-<p><strong>中介者模式</strong></p>
-<p><strong>访问者模式</strong></p>
-<p><strong>观察者模式</strong></p>
-<p><strong>工厂模式</strong></p>
-<p>等等等等。。。。太多了， 在我看来，凡是逻辑不是自己实现还是移交给其他类的模式都可以归纳为这类下。</p>
-<p>##封装</p>
-<p>面向对象的三大特性：封装，继承，多态：</p>
-<p>如果客户端能简单的调用后台或服务的统一接口，那么类与类之间就必须做好数据与方法的封装：</p>
-<p>迪米特原则：<br>迪米特原则英文全称为Law of Demeter，简称LOD，也称为最少知识原则（Least Knowledge Principle）。虽然名字不同，但描述的是同一个原则：一个对象应该对其他对象有最少的了解。通俗地讲，一个类应该对自己需要耦合或调用的类知道得最少，类的内部如何实现、如何复杂都与调用者或者依赖者没关系，调用者或者依赖者只需要知道他需要的方法即可，其他的我一概不关心。类与类之间的关系越密切，耦合度越大，当一个类发生改变时，对另一个类的影响也越大。</p>
-<p>迪米特法则还有一个英文解释是：Only talk to your immedate friends，翻译过来就是：只与直接的朋友通信。什么叫做直接的朋友呢？每个对象都必然会与其他对象有耦合关系，两个对象之间的耦合就成为朋友关系，这种关系的类型有很多，例如组合、聚合、依赖等。</p>
-<p>其实涉及到很多的设计模式：</p>
-<p><strong>组合模式</strong></p>
-<p><strong>解释器模式</strong></p>
-<p><strong>策略模式</strong></p>
-<p><strong>命令模式</strong></p>
-<p><strong>门面模式</strong></p>
-<p>等等等等</p>
-<p>#总结</p>
-<p><strong>防止过度设计</strong></p>
-<p><strong>重构一般情况下并不能减少代码量（除了去除重复之外），重构与模式主要目的是使代码易于扩展，易于阅读，结构清晰。</strong></p>
-<p><strong>不要吝惜去新写一个类。，任何一个复杂的逻辑分支（if,switch）都可以通过新建一个类，使用相关模式进行重构（解释器模式，组合模式，策略模式，命令模式，工厂模式等等）</strong></p>
-<p><strong>软件是人类有史以来最复杂的系统。其一、软件系统本身规模庞大，参与人手众多，难以管理；其二、环境和需求不断变化，且错误难以避免。人类无法驾驭过于复杂的事物，于是只能寻找方法简化软件系统：把系统分为许多子部分，人们开发一个部分的时候，系统其他部分都是一种抽象，无需了解其细节</strong></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/18/软件设计原则/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-18T22:06:25+08:00" content="2016-03-18">
-              2016-03-18
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#序</p>
-<p>#综述</p>
-<p>##将变化的部分抽象出来:</p>
-<p>##开闭原则：(对扩展开放,对修改封闭)，原则之所以叫原则，就是我们软件设计要趋向的标准，越靠近这些原则，说明软件的架构越好。</p>
-<p>##层次《企业应用架构模式，p1底部&amp;p13》–&gt;依赖倒置</p>
-<p>##过度设计《重构与模式 p2》</p>
-<p>##一多之分：一个类含有两个几乎一样的方法，唯一的区别就是一个用来处理单一对象，一个用来处理对象的集合。（使用composite (DP)来组装入参，《重构与模式》p181）</p>
-<p>##重构一般情况下并不能减少代码量（除了去除重复之外），重构与模式主要目的是使代码易于扩展，易于阅读，结构清晰。</p>
-<p>##个人总结的软件原则：1：委托原则（adapter,中介者模式，观察者模式，命令模式）2：依赖倒置与变化抽象（），3：组合包装（组织型设计模式，组合模式，门面模式）</p>
-<p>##要做一名优秀的架构师，就得对各种架构做到了熟于心</p>
-<p>##设计模式三部曲（设计模式–&gt;重构–&gt;重构与模式），重构是一个动作（小步快跑，持续迭代），模式是一个结果（呈现出合理使用设计模式的架构）</p>
-<p>##永远都要向开闭原则靠近（不是说一定不要违反），</p>
-<p>##不要吝惜去新写一个类。，任何一个复杂的逻辑分支（if,switch）都可以通过新建一个类，使用相关模式进行重构（解释器模式，组合模式，策略模式，命令模式，工厂模式等等）</p>
-<p>##什么叫好书：</p>
-<p>1：0到1，提出新的概念，新的思维，新的方案并成为大众所接受的书。2：对实践经验进行全面深刻的总结，并能帮助大众解决实际问题的书。3：启发式的书籍，在读的过程中给人一种醍醐灌顶，相见恨晚的感觉，这种不一定给出具体的解决方案，但他会制定某领域的一些原则与规范。</p>
-<p>##抽象是我们控制软件复杂性的重要手段。</p>
-<p>软件是人类有史以来最复杂的系统。其一、软件系统本身规模庞大，参与人手众多，难以管理；其二、环境和需求不断变化，且错误难以避免。<br>人类无法驾驭过于复杂的事物，于是只能寻找方法简化软件系统：把系统分为许多子部分，人们开发一个部分的时候，系统其他部分都是一种抽象，无需了解其细节。</p>
-<p>##封装性（隔离，封闭，迪米特原则（非常重要的原则），知道的越少越好，参考GOF的结构性设计模式，如果包装组织类的结构）</p>
-<p>##客户端代码对服务或其他函数的调用方法一定是最简洁最明确的，客户端能一行代码完成功能的，绝不用二行代码，能用二行代码完成的，绝不用三行代码，要达到这样的目标必需要对被调用方进行数据封装，逻辑隔离，变化抽象等等，使用到的DP包括组织性的DP和创建性的DP.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/03/18/乔布斯魅力演讲/" itemprop="url">
-                  未命名
+                  乔布斯魅力演讲
                 </a>
               
             
@@ -486,7 +220,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-18T22:06:25+08:00" content="2016-03-18">
+            <time itemprop="dateCreated" datetime="2016-03-18T15:50:30+08:00" content="2016-03-18">
               2016-03-18
             </time>
           </span>
@@ -571,274 +305,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/18/关注技术本身/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-18T22:06:25+08:00" content="2016-03-18">
-              2016-03-18
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这几天看了一些关于软件设计类的书籍，但是时间短暂，加上自己的代码量基础并不是很多，所以收获的知识很少，但是却给了一个引导性的启发和一个可能长期保持兴趣点。有两方面的感想。<br>1：软件设计一直是我非常感兴趣的领域，我会一直关注这块领域。<br>2：技术人员应该有自己的技术追求。<br>关于第二点我想多说一些：<br>完成业务功能业务之外，我们作为技术开发人员更应该关注技术本身的美，如何创造和完善这种美，是我们技术人员不断的追求，如果一直在追求需求，需求，功能，功能，那不是技术人员。搞技术的越来越懂业务，搞业务的依然不搞技术，我想这不是一个好的发展趋势，技术人员应该有技术人员自己的追求。只感觉到大家工作的目的都在为生活或者生存下去，这点不可否认，但是在为生存打拼的时候，我们是否应该有更高的技术追求，把一块业务写好，把一段程序写得完美。这才是一个作为技术人员应该的做的事，而不是只为了完成需求或功能而在写程序，把写程序当作一个生存技能，而不是当作兴趣爱好来做，那个势必会每天感觉很累。面对每天大量的工作量，可能我们渐渐的麻木起来，也很少有时间去思考技术的本质，渐渐的忘却或者根本就没有理解“用技术改变世界”的伟大志向。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/18/UML类图关系符号/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-18T22:06:25+08:00" content="2016-03-18">
-              2016-03-18
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#序<br><strong>UML</strong>（Unified Modeling Language）统一建模语言，它是一个支持模型化和软件系统开发的图形化语言，为软件开发的所有阶段提供模型化和可视化支持，包括由需求分析到规格，到构造和配置。 <strong>balabala</strong>。。。。。。一大堆</p>
-<p>平常我们在学习设计模式或者学习某个系统的架构时，大多都会接触到UML图，我个人最常看到的就是类图，序列图。</p>
-<p>由经常接触，很多UML的符号不是在了解，导致很多图看不太明白。所以就是从网上搜集一些资料作下记录以便及时查看。</p>
-<p><strong>本文主要是讲述类图中类与类之间的关系的描述符号</strong></p>
-<p>#正文</p>
-<p>##综述<br><strong>类图（Class Diagram）</strong>是显示了模型的静态结构，特别是模型中存在的类，类的内部结构以及它们与其他类的关系等。</p>
-<p>UML中描述对象和类之间相互关系的方式包括：</p>
-<ol>
-<li><strong>依赖（Dependency）</strong>，</li>
-<li><strong>关联（Association）</strong>，</li>
-<li><strong>聚合（Aggregation）</strong>，</li>
-<li><strong>组合（Composition）</strong>，</li>
-<li><strong>泛化（Generalization）</strong>，</li>
-<li><strong>实现（Realization）</strong></li>
-</ol>
-<p>##依赖（Dependency）虚线箭头表示</p>
-<p>元素A的变化会影响元素B,但反之不成立，那么B和A的关系是依赖关系，B依赖A;</p>
-<ol>
-<li>依赖关系也是类与类之间的联结</li>
-<li>依赖总是单向的。（#add 注意，要避免双向依赖。一般来说，不应该存在双向依赖。）</li>
-<li><p>依赖关系在 Java 或 C++ 语言中体现为<strong>局部变量、方法的参数或者对静态方法的调用</strong>。</p>
-<p> class Person<br> {<br> void buy(Car car){<br> }<br> }</p>
-</li>
-</ol>
-<p><img src="http://img3.tbcdn.cn/L1/461/1/2dd95525d419105570047b69cca75996258c5cbe.png" alt=""></p>
-<p>表示方法：<strong>虚线加箭头</strong></p>
-<p>特点：当类与类之间有使用关系时就属于依赖关系，不同于关联关系，依赖不具有“拥有关系”，而是一种<strong>“相识关系”</strong>，只在某个<strong>特定地方（比如某个方法体内）才有关系</strong>。</p>
-<p>##关联（Association）实线箭头表示<br>元素间的结构化关系，是一种弱关系，被关联的元素间通常可以被独立的考虑。uml中用实线表示Association关系，箭头指向被依赖元素</p>
-<ol>
-<li><p>关联关系是类与类之间的联结，它使一个类知道另一个类的属性和方法。<br>2、关联可以是双向的，也可以是单向的（#add还有自身关联）。双向的关联可以有两个箭头或者没有箭头，单向的关联有一个箭头。<br>3、在 Java 或 c++ 中，关联关系是通过<strong>使用成员变量来实现的</strong>。</p>
-<p> class 徒弟<br> {<br> };<br> class 唐僧<br>  {</p>
-<pre><code>protected: list&lt;徒弟&gt; tdlist;
-</code></pre><p> };</p>
-</li>
-</ol>
-<p><img src="http://img2.tbcdn.cn/L1/461/1/7280ecb9c4cdcea531557b5b213d34a47f66378e.png" alt=""></p>
-<p>表示方法：<strong>实线箭头</strong></p>
-<p>特征：表示类与类或类与接口之间的依赖关系，表现为“<strong>拥有关系</strong>”；具体到代码可以<strong>用实例变量来表示</strong>。</p>
-<p>##聚合（Aggregation）：带空心菱形头表示</p>
-<p>关联关系的一种特例，表示部分和整体（整体 has a 部分）的关系。uml中用带空心菱形头的实线表示Aggregation关系，菱形头指向整体。</p>
-<ol>
-<li>聚合关系是关联关系的一种，是强的关联关系。</li>
-<li>聚合是<strong>整体和部分</strong>之间的关系，例如汽车由引擎、轮胎以及其它零件组成。</li>
-<li>聚合关系也是<strong>通过成员变量来实现</strong>的。但是，关联关系所涉及的两个类处在同一个层次上，而聚合关系中，两个类处于不同的层次上，<strong>一个代表整体，一个代表部分</strong>。</li>
-<li>关联与聚合仅仅从 Java 或 C++ 语法上是无法分辨的，必须考察所涉及的类之间的逻辑关系。</li>
-</ol>
-<pre><code>class 引擎
- {
- };
- class 轮胎
- {
- };
- class 汽车
- {
-        protected:引擎 engine;
-        protected:轮胎 tyre[4];
- };
-</code></pre><p><img src="http://img1.tbcdn.cn/L1/461/1/bf5c918b6456fa1f9d8d7b5087663fc80f00eeaf.png" alt="">\</p>
-<p>表示方法：<strong>空心菱形实线箭头头</strong></p>
-<p>特征：属于是关联的特殊情况，<strong>体现部分-整体关系</strong>，是一种弱拥有关系；整体和部分可以<strong>有不一样的生命周期</strong>；是一种弱关联；</p>
-<p>##组合（Composition）：带实心菱形头的实线表示</p>
-<p>组合是聚合关系的变种，表示元素间更强的组合关系。如果是组合关系，如果整体被破坏则个体一定会被破坏，而聚合的个体则可能是被多个整体所共享的，不一定会随着某个整体的破坏而被破坏。uml中用带实心菱形头的实线表示Composition关系，菱形头指向整体。</p>
-<ol>
-<li>合成关系是关联关系的一种，是比聚合关系还要强的关系。</li>
-<li><p>它要求普通的聚合关系中<strong>代表整体的对象负责代表部分的对象的生命周期</strong>。</p>
-<p> class 肢<br>  {<br>  };<br>  class 人<br>  {</p>
-<pre><code>protected:  肢   limb[4];
-</code></pre><p>  };</p>
-</li>
-</ol>
-<p><img src="http://img1.tbcdn.cn/L1/461/1/8ac79a0f5923e13c017ff459646ae1bc886f5959.png" alt=""></p>
-<p>表示方法:<strong>实心菱形加实线箭头</strong><br>特征：属于是关联的特殊情况，也体现了体现部分-整体关系，是一种强“拥有关系”；<strong>整体与部分有相同的生命周期</strong>，是一种强关联；</p>
-<p>##泛化（Generalization）带空心箭头的实线</p>
-<p>泛化是用于对继承进行建模的UML元素。在Java中，用extends关键字来直接表示这种关系。</p>
-<p>泛化关系表示类与类之间的继承关系，接口与接口之间的继承关系。</p>
-<pre><code>public abstract class Employee{
-}
-public class Professor extends Employee{
-}
-</code></pre><p><img src="http://img2.tbcdn.cn/L1/461/1/455e1ada7610d6f4584670011ee887a80511dd3d.png" alt=""></p>
-<p>##实现 (Realization）：空心箭头和虚线表示</p>
-<p>对Java应用程序进行建模时，实现关系可直接用implements关键字来表示。</p>
-<pre><code>public interface CollegePerson{
-}
-public class Professor implements CollectPersion{
-}
-</code></pre><p><img src="http://img1.tbcdn.cn/L1/461/1/138e748fa0a3fe43d1a747a4cb68b6bf505bb614.png" alt=""></p>
-<p>#总结</p>
-<p>没什么好总结的，多用多查，记得就行。。。。。。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/03/18/spi翻译/" itemprop="url">
-                  未命名
+                  spi翻译
                 </a>
               
             
@@ -851,7 +319,7 @@ public class Professor implements CollectPersion{
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-18T22:06:25+08:00" content="2016-03-18">
+            <time itemprop="dateCreated" datetime="2016-03-18T15:50:30+08:00" content="2016-03-18">
               2016-03-18
             </time>
           </span>
@@ -1019,8 +487,8 @@ public class Professor implements CollectPersion{
             
               
                 
-                <a class="post-title-link" href="/2016/03/18/listener&travelbc/" itemprop="url">
-                  未命名
+                <a class="post-title-link" href="/2016/03/18/软件设计原则/" itemprop="url">
+                  软件设计原则
                 </a>
               
             
@@ -1033,7 +501,432 @@ public class Professor implements CollectPersion{
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-18T22:06:25+08:00" content="2016-03-18">
+            <time itemprop="dateCreated" datetime="2016-03-18T15:50:30+08:00" content="2016-03-18">
+              2016-03-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#序</p>
+<p>上次更新博客已是十四天前，这两个星期的时间，在下也没有懈怠，草草的看了一些软件设计的书，当昨天合上最后一本的时候，突然发现自己心里啥都没记住，难道我已经达到了学习的最高境界，心中无书胜有书，我完全在放屁。两个星期没更新了，箭在弦上，不得不发。虽然只是草草的看一遍或者一部分，但在过程中也作了一些笔记，这篇文章大部分也就是我笔记的内容，比较虚，比较空，等以后我更深入了解后，再做更深入的贡献！</p>
+<p>#读了什么书？</p>
+<p>人称软件设计三部曲的<strong>《设计模式》《重构》《重构与模式》</strong><br><strong>《设计模式》</strong>：如果一部电影豆瓣评分高达9分，你会不会看？那如果是一本书呢？</p>
+<p><img src="http://img2.tbcdn.cn/L1/461/1/87a45a8cf691145b1ba11bda92226c7c39a8ae32.png" alt="screenshot"></p>
+<p>深深的感受下amazon关于这本书有用度排名第一的评论：</p>
+<p><img src="http://img1.tbcdn.cn/L1/461/1/cc6c34dfc512576d2acb096b60a9f1947589b086.png" alt="screenshot"></p>
+<p>什么？没看懂！没关系，我是只拿这个来提高这篇文章的逼格用的，不过放心对于这本书几乎清一色的好评。</p>
+<p><strong>《重构》</strong>：豆瓣评分一样高达9.1分，和《设计模式》一样，</p>
+<p><img src="http://img4.tbcdn.cn/L1/461/1/51b89c69a2ef80cca653d8cac8c596af424e595a.png" alt="screenshot"></p>
+<p>有关于这本书的作者，就多说几句：</p>
+<p><strong>福勒（Martin Fowler）</strong>，在面向对象分析设计、UML、模式、软件开发方法学、XP、重构等方面，都是世界顶级的专家，现为Thought Works公司的首席科学家。Thought Works是一家从事企业应用开发和集成的公司。早在20世纪80年代，Fowler就是使用对象技术构建多层企业应用的倡导者，他著有几本经典书籍：《分析模式》、《UML精粹》和《重构》等。</p>
+<p><strong>《重构与模式》</strong>：看看为这本书做序的人你就知道这本书为什么值得一看了。</p>
+<p><img src="http://img4.tbcdn.cn/L1/461/1/d48895d731fd19b2017056a4762761abc0758e95.png" alt="screenshot"></p>
+<p><img src="http://img3.tbcdn.cn/L1/461/1/d1107a6bef95076df07532cd83a66a8d86007d3e.png" alt="screenshot"></p>
+<p><strong>重构是一个动作（小步快跑，持续迭代），模式是一个结果（呈现出合理使用设计模式的架构）</strong></p>
+<p>#什么是好书？<br>关于这点我在这两个星期也有点感悟。到底什么是好书!我个人认为：</p>
+<p>#####1. 从0到1，提出新的概念，新的思维，新的方案并成为大众所接受的书。</p>
+<p>#####2. 对实践经验进行全面深刻的总结，并能帮助大众解决实际问题的书。</p>
+<p>#####3. 启发式的书籍，在读的过程中给人一种醍醐灌顶，相见恨晚的感觉，这种书不一定给出具体的解决方案，但会影响读者思考问题的方式。</p>
+<p>#关键字</p>
+<p>##开闭</p>
+<p>说开闭原则是一切软件设计的终极目标一点也不为过，举个例子就是开闭原则就是宪法，而所有的法律法规的制定都要以宪法内容为基准，反过来如果所有法律法规内容和规范都执行的很好，也就达到了宪法的内容规定。所谓开闭原则指的是：对扩展开放，对修改封闭。如何理解开闭原则？</p>
+<p><img src="http://img2.tbcdn.cn/L1/461/1/1a0284e4e2e6a6148bb09b98fb14a558d27aabcf.png" alt="screenshot"></p>
+<p>如果程序中的一处改动就会产生连锁反应，导致一系列相关模块的改动，那么设计就显得特别僵化，开闭原则建议我们应该对系统进行重构，这样以后对系统再进行那样的改动时，就不会导致更多的修改。如果正确地应用开闭原则，那么以后再进行两样的改动时，就只需要添加新的代码，而不必改动已经正常运行的代码。</p>
+<p>开闭原则具有两个主要的特征：</p>
+<p><strong>1. 对扩展是开放的</strong><br> 这意味关模块的行为是可以扩展的，当应用的需求改变时，我们可以对模块进行扩展，使其具有满足那些改变的新行为。换句话说，我们可以改变模块的功能。</p>
+<p><strong>2. 对于更改是封闭的</strong><br> 对模块行为进行扩展时，不必改动模块的源代码，模块的二进制可执行版本，无论是可链接的库，DLL或者java的.jar文件，都无需改动。</p>
+<p>###抽象</p>
+<p>如何实现开闭原则，关键是抽象。抽象是我们控制软件复杂性的重要手段。</p>
+<p>要想达到对更改是封闭的，我们必须面向抽象编程;</p>
+<p>要想达到对扩展是开放的，我们必须抽象变化模块;</p>
+<p><img src="http://img2.tbcdn.cn/L1/461/1/5d1a7fda5d26d8ea1cd55c9d03e88ca5f78cda0d.png" alt="screenshot"></p>
+<p>左边展示了一个简单的不遵循开闭原则的设计。client类和server类都是具体类。client类使用server类，如果我们希望client对象使用另外一个不同的服务器对象，那么就必须要把client类中使用server类的地方 更改为新的服务器类。</p>
+<p>右边展示了一个针对上述问题的遵循开闭原则的设计，在这个设计中，clientInterface类是一个拥有抽象成员函数的抽象类。client类使用这个抽象类，然而client类的对象却使用server类的派生类的对象，如果我们希望client对象使用一个不同的服务器类，那么只需要从clientInterface类派生一个新的类，无需对client类做任何改动。这就做到了对扩展开放，对更改封闭。</p>
+<p>###依赖倒置</p>
+<p>据说所说，任何企业的架构归根结底都是按照某种形式的层次分层设计的。最经典的莫过于三层架构的系统，这这种方式下，在表现层实现用户界面，在领域层实现领域逻辑，在数据源层存取数据，这种方式使你可以将复杂的领域逻辑从界面代码中抽取出来，单独放到中间层，用对象加以建模和组织。</p>
+<p>如何将企业应用组织成不同的层次？以及这些层次之间如何协同工作？</p>
+<p>我觉得最重要策略或至少一定会用到依赖倒置的原则，这个原则恰恰是面向抽象编程以达到开闭原则的重要一步：</p>
+<p>依赖原则简单来说：</p>
+<p><strong>1.高层模块不应该依赖于低层模块，二者都应该依赖于抽象</strong><br><strong>2.抽象不应该依赖于细节，细节应该依赖于抽象</strong></p>
+<p><img src="http://img2.tbcdn.cn/L1/461/1/7926dc37db5999400dfe8c9714bb437e801191d7.png" alt="screenshot"></p>
+<p>上图中高层的policy layer使用了低层的mechanis layer，而mechanism layer又使用了更细节的层utility layer，这看起来似乎是正确的，但是policy layer对于其下一直到utility layer的改动都是敏感的，这种依赖关系是传递的。policy layer依赖于某些依赖于utility layer的层次：因此policy layer传递性地依赖于utility layer。</p>
+<p><img src="http://img4.tbcdn.cn/L1/461/1/ed821d9edff2da4270e408ebc39e957428beb99a.png" alt="screenshot"></p>
+<p>上图展示了一个更为合适的模型。第一个较高层次都为它所需要的服务声明一个抽象接口，较低的层次实现了这些抽象接口，每个高层类都通过该抽象接口使用下一层，这样高层就不依赖于低层，低层反而依赖于在高层中声明的抽象服务接口。这不仅解除了policy layer对于utility layer的传递依赖关系，甚至也解除了policy layer对于mechanism layer的依赖关系。</p>
+<p>##委托</p>
+<p>一个好的领导不一定知道一件事具体应该怎么做，但一定知道把什么样的事分委托给什么样的人去办，而且委托过程很简单，可能只是一句话，也可能只是面对一个人，就能把事情委托下去并且能办好。程序也是一样，客户端代码对服务或其他函数的调用方法一定是最简洁最明确的，客户端能一行代码完成功能的，绝不用二行代码，能用二行代码完成的，绝不用三行代码，要达到这样的目标必需要对被调用方进行数据封装，逻辑隔离，变化抽象等等，使用到的设计模式包括创建型模式和结构型模式。</p>
+<p>委托型的设计模式包括很多：典型的有：</p>
+<p><strong>适配器模式</strong></p>
+<p><strong>中介者模式</strong></p>
+<p><strong>访问者模式</strong></p>
+<p><strong>观察者模式</strong></p>
+<p><strong>工厂模式</strong></p>
+<p>等等等等。。。。太多了， 在我看来，凡是逻辑不是自己实现还是移交给其他类的模式都可以归纳为这类下。</p>
+<p>##封装</p>
+<p>面向对象的三大特性：封装，继承，多态：</p>
+<p>如果客户端能简单的调用后台或服务的统一接口，那么类与类之间就必须做好数据与方法的封装：</p>
+<p>迪米特原则：<br>迪米特原则英文全称为Law of Demeter，简称LOD，也称为最少知识原则（Least Knowledge Principle）。虽然名字不同，但描述的是同一个原则：一个对象应该对其他对象有最少的了解。通俗地讲，一个类应该对自己需要耦合或调用的类知道得最少，类的内部如何实现、如何复杂都与调用者或者依赖者没关系，调用者或者依赖者只需要知道他需要的方法即可，其他的我一概不关心。类与类之间的关系越密切，耦合度越大，当一个类发生改变时，对另一个类的影响也越大。</p>
+<p>迪米特法则还有一个英文解释是：Only talk to your immedate friends，翻译过来就是：只与直接的朋友通信。什么叫做直接的朋友呢？每个对象都必然会与其他对象有耦合关系，两个对象之间的耦合就成为朋友关系，这种关系的类型有很多，例如组合、聚合、依赖等。</p>
+<p>其实涉及到很多的设计模式：</p>
+<p><strong>组合模式</strong></p>
+<p><strong>解释器模式</strong></p>
+<p><strong>策略模式</strong></p>
+<p><strong>命令模式</strong></p>
+<p><strong>门面模式</strong></p>
+<p>等等等等</p>
+<p>#总结</p>
+<p><strong>防止过度设计</strong></p>
+<p><strong>重构一般情况下并不能减少代码量（除了去除重复之外），重构与模式主要目的是使代码易于扩展，易于阅读，结构清晰。</strong></p>
+<p><strong>不要吝惜去新写一个类。，任何一个复杂的逻辑分支（if,switch）都可以通过新建一个类，使用相关模式进行重构（解释器模式，组合模式，策略模式，命令模式，工厂模式等等）</strong></p>
+<p><strong>软件是人类有史以来最复杂的系统。其一、软件系统本身规模庞大，参与人手众多，难以管理；其二、环境和需求不断变化，且错误难以避免。人类无法驾驭过于复杂的事物，于是只能寻找方法简化软件系统：把系统分为许多子部分，人们开发一个部分的时候，系统其他部分都是一种抽象，无需了解其细节</strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/18/关注技术本身/" itemprop="url">
+                  关注技术本身
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-18T15:50:30+08:00" content="2016-03-18">
+              2016-03-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这几天看了一些关于软件设计类的书籍，但是时间短暂，加上自己的代码量基础并不是很多，所以收获的知识很少，但是却给了一个引导性的启发和一个可能长期保持兴趣点。有两方面的感想。<br>1：软件设计一直是我非常感兴趣的领域，我会一直关注这块领域。<br>2：技术人员应该有自己的技术追求。<br>关于第二点我想多说一些：<br>完成业务功能业务之外，我们作为技术开发人员更应该关注技术本身的美，如何创造和完善这种美，是我们技术人员不断的追求，如果一直在追求需求，需求，功能，功能，那不是技术人员。搞技术的越来越懂业务，搞业务的依然不搞技术，我想这不是一个好的发展趋势，技术人员应该有技术人员自己的追求。只感觉到大家工作的目的都在为生活或者生存下去，这点不可否认，但是在为生存打拼的时候，我们是否应该有更高的技术追求，把一块业务写好，把一段程序写得完美。这才是一个作为技术人员应该的做的事，而不是只为了完成需求或功能而在写程序，把写程序当作一个生存技能，而不是当作兴趣爱好来做，那个势必会每天感觉很累。面对每天大量的工作量，可能我们渐渐的麻木起来，也很少有时间去思考技术的本质，渐渐的忘却或者根本就没有理解“用技术改变世界”的伟大志向。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/18/UML类图关系符号/" itemprop="url">
+                  UML类图关系符号
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-18T15:50:30+08:00" content="2016-03-18">
+              2016-03-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#序<br><strong>UML</strong>（Unified Modeling Language）统一建模语言，它是一个支持模型化和软件系统开发的图形化语言，为软件开发的所有阶段提供模型化和可视化支持，包括由需求分析到规格，到构造和配置。 <strong>balabala</strong>。。。。。。一大堆</p>
+<p>平常我们在学习设计模式或者学习某个系统的架构时，大多都会接触到UML图，我个人最常看到的就是类图，序列图。</p>
+<p>由经常接触，很多UML的符号不是在了解，导致很多图看不太明白。所以就是从网上搜集一些资料作下记录以便及时查看。</p>
+<p><strong>本文主要是讲述类图中类与类之间的关系的描述符号</strong></p>
+<p>#正文</p>
+<p>##综述<br><strong>类图（Class Diagram）</strong>是显示了模型的静态结构，特别是模型中存在的类，类的内部结构以及它们与其他类的关系等。</p>
+<p>UML中描述对象和类之间相互关系的方式包括：</p>
+<ol>
+<li><strong>依赖（Dependency）</strong>，</li>
+<li><strong>关联（Association）</strong>，</li>
+<li><strong>聚合（Aggregation）</strong>，</li>
+<li><strong>组合（Composition）</strong>，</li>
+<li><strong>泛化（Generalization）</strong>，</li>
+<li><strong>实现（Realization）</strong></li>
+</ol>
+<p>##依赖（Dependency）虚线箭头表示</p>
+<p>元素A的变化会影响元素B,但反之不成立，那么B和A的关系是依赖关系，B依赖A;</p>
+<ol>
+<li>依赖关系也是类与类之间的联结</li>
+<li>依赖总是单向的。（#add 注意，要避免双向依赖。一般来说，不应该存在双向依赖。）</li>
+<li><p>依赖关系在 Java 或 C++ 语言中体现为<strong>局部变量、方法的参数或者对静态方法的调用</strong>。</p>
+<p> class Person<br> {<br> void buy(Car car){<br> }<br> }</p>
+</li>
+</ol>
+<p><img src="http://img3.tbcdn.cn/L1/461/1/2dd95525d419105570047b69cca75996258c5cbe.png" alt=""></p>
+<p>表示方法：<strong>虚线加箭头</strong></p>
+<p>特点：当类与类之间有使用关系时就属于依赖关系，不同于关联关系，依赖不具有“拥有关系”，而是一种<strong>“相识关系”</strong>，只在某个<strong>特定地方（比如某个方法体内）才有关系</strong>。</p>
+<p>##关联（Association）实线箭头表示<br>元素间的结构化关系，是一种弱关系，被关联的元素间通常可以被独立的考虑。uml中用实线表示Association关系，箭头指向被依赖元素</p>
+<ol>
+<li><p>关联关系是类与类之间的联结，它使一个类知道另一个类的属性和方法。<br>2、关联可以是双向的，也可以是单向的（#add还有自身关联）。双向的关联可以有两个箭头或者没有箭头，单向的关联有一个箭头。<br>3、在 Java 或 c++ 中，关联关系是通过<strong>使用成员变量来实现的</strong>。</p>
+<p> class 徒弟<br> {<br> };<br> class 唐僧<br>  {</p>
+<pre><code>protected: list&lt;徒弟&gt; tdlist;
+</code></pre><p> };</p>
+</li>
+</ol>
+<p><img src="http://img2.tbcdn.cn/L1/461/1/7280ecb9c4cdcea531557b5b213d34a47f66378e.png" alt=""></p>
+<p>表示方法：<strong>实线箭头</strong></p>
+<p>特征：表示类与类或类与接口之间的依赖关系，表现为“<strong>拥有关系</strong>”；具体到代码可以<strong>用实例变量来表示</strong>。</p>
+<p>##聚合（Aggregation）：带空心菱形头表示</p>
+<p>关联关系的一种特例，表示部分和整体（整体 has a 部分）的关系。uml中用带空心菱形头的实线表示Aggregation关系，菱形头指向整体。</p>
+<ol>
+<li>聚合关系是关联关系的一种，是强的关联关系。</li>
+<li>聚合是<strong>整体和部分</strong>之间的关系，例如汽车由引擎、轮胎以及其它零件组成。</li>
+<li>聚合关系也是<strong>通过成员变量来实现</strong>的。但是，关联关系所涉及的两个类处在同一个层次上，而聚合关系中，两个类处于不同的层次上，<strong>一个代表整体，一个代表部分</strong>。</li>
+<li>关联与聚合仅仅从 Java 或 C++ 语法上是无法分辨的，必须考察所涉及的类之间的逻辑关系。</li>
+</ol>
+<pre><code>class 引擎
+ {
+ };
+ class 轮胎
+ {
+ };
+ class 汽车
+ {
+        protected:引擎 engine;
+        protected:轮胎 tyre[4];
+ };
+</code></pre><p><img src="http://img1.tbcdn.cn/L1/461/1/bf5c918b6456fa1f9d8d7b5087663fc80f00eeaf.png" alt="">\</p>
+<p>表示方法：<strong>空心菱形实线箭头头</strong></p>
+<p>特征：属于是关联的特殊情况，<strong>体现部分-整体关系</strong>，是一种弱拥有关系；整体和部分可以<strong>有不一样的生命周期</strong>；是一种弱关联；</p>
+<p>##组合（Composition）：带实心菱形头的实线表示</p>
+<p>组合是聚合关系的变种，表示元素间更强的组合关系。如果是组合关系，如果整体被破坏则个体一定会被破坏，而聚合的个体则可能是被多个整体所共享的，不一定会随着某个整体的破坏而被破坏。uml中用带实心菱形头的实线表示Composition关系，菱形头指向整体。</p>
+<ol>
+<li>合成关系是关联关系的一种，是比聚合关系还要强的关系。</li>
+<li><p>它要求普通的聚合关系中<strong>代表整体的对象负责代表部分的对象的生命周期</strong>。</p>
+<p> class 肢<br>  {<br>  };<br>  class 人<br>  {</p>
+<pre><code>protected:  肢   limb[4];
+</code></pre><p>  };</p>
+</li>
+</ol>
+<p><img src="http://img1.tbcdn.cn/L1/461/1/8ac79a0f5923e13c017ff459646ae1bc886f5959.png" alt=""></p>
+<p>表示方法:<strong>实心菱形加实线箭头</strong><br>特征：属于是关联的特殊情况，也体现了体现部分-整体关系，是一种强“拥有关系”；<strong>整体与部分有相同的生命周期</strong>，是一种强关联；</p>
+<p>##泛化（Generalization）带空心箭头的实线</p>
+<p>泛化是用于对继承进行建模的UML元素。在Java中，用extends关键字来直接表示这种关系。</p>
+<p>泛化关系表示类与类之间的继承关系，接口与接口之间的继承关系。</p>
+<pre><code>public abstract class Employee{
+}
+public class Professor extends Employee{
+}
+</code></pre><p><img src="http://img2.tbcdn.cn/L1/461/1/455e1ada7610d6f4584670011ee887a80511dd3d.png" alt=""></p>
+<p>##实现 (Realization）：空心箭头和虚线表示</p>
+<p>对Java应用程序进行建模时，实现关系可直接用implements关键字来表示。</p>
+<pre><code>public interface CollegePerson{
+}
+public class Professor implements CollectPersion{
+}
+</code></pre><p><img src="http://img1.tbcdn.cn/L1/461/1/138e748fa0a3fe43d1a747a4cb68b6bf505bb614.png" alt=""></p>
+<p>#总结</p>
+<p>没什么好总结的，多用多查，记得就行。。。。。。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/18/listener&travelbc/" itemprop="url">
+                  listener&travelbc
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-18T15:50:30+08:00" content="2016-03-18">
               2016-03-18
             </time>
           </span>
@@ -1325,13 +1218,20 @@ public static void main(String[] args) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
 
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
