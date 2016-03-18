@@ -1,0 +1,853 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="#序这段时间由于做旅行机票的项目，其中涉及到Travelbc系统的定制，对travelbc进行了一点点很小的改动。所谓Travelbc（travel book center）指是航旅度假业务中预约订单数据处理后台中心。这样的改动也给我了一次了解TravelBc代码的机会，给我感触最大的是核心框架的搭建有很特别优秀的设计。为什么我接触的系统设计都那么好？一是因为架构确实好，二是因为我的有很多值得我学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2016/03/18/listener&travelbc/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#序这段时间由于做旅行机票的项目，其中涉及到Travelbc系统的定制，对travelbc进行了一点点很小的改动。所谓Travelbc（travel book center）指是航旅度假业务中预约订单数据处理后台中心。这样的改动也给我了一次了解TravelBc代码的机会，给我感触最大的是核心框架的搭建有很特别优秀的设计。为什么我接触的系统设计都那么好？一是因为架构确实好，二是因为我的有很多值得我学">
+<meta property="og:image" content="http://img1.tbcdn.cn/L1/461/1/910db606b7d0235343d3e9bc199500e0bfad39e6.png">
+<meta property="og:image" content="http://img1.tbcdn.cn/L1/461/1/38ffb8e599a359cbd9298dbffd5bdff443167b6a.png">
+<meta property="og:image" content="http://img4.tbcdn.cn/L1/461/1/64c33db3948f2684f19bc92b067cb374dee8de87.png">
+<meta property="og:image" content="http://img2.tbcdn.cn/L1/461/1/11bb8785681aaf33dd2282674e66ef6c7c5b1056.png">
+<meta property="og:updated_time" content="2015-12-13T13:34:17.446Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="#序这段时间由于做旅行机票的项目，其中涉及到Travelbc系统的定制，对travelbc进行了一点点很小的改动。所谓Travelbc（travel book center）指是航旅度假业务中预约订单数据处理后台中心。这样的改动也给我了一次了解TravelBc代码的机会，给我感触最大的是核心框架的搭建有很特别优秀的设计。为什么我接触的系统设计都那么好？一是因为架构确实好，二是因为我的有很多值得我学">
+<meta name="twitter:image" content="http://img1.tbcdn.cn/L1/461/1/910db606b7d0235343d3e9bc199500e0bfad39e6.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title>  | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-18T22:06:25+08:00" content="2016-03-18">
+              2016-03-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#序<br>这段时间由于做旅行机票的项目，其中涉及到Travelbc系统的定制，对travelbc进行了一点点很小的改动。所谓Travelbc（travel book center）指是航旅度假业务中预约订单数据处理后台中心。这样的改动也给我了一次了解TravelBc代码的机会，给我感触最大的是核心框架的搭建有很特别优秀的设计。为什么我接触的系统设计都那么好？一是因为架构确实好，二是因为我的有很多值得我学习的地点。代码拉到类的注释部分发现，写这些代码作者不是别人正是坐在我工位旁边的XX同学，默默的转脸过去看到他那俊朗的侧脸，钦佩之情油然而生。。。。吧啦吧啦吧啦。。。。。<br>话说回来，一个系统能够稳定的运行有很多因素影响，因素之一就是良好的代码设计。曾经有和一个同事探讨什么样的代码才叫好的代码。或者说好的代码应用具有什么样的特点。我当时这样回答的：</p>
+<ol>
+<li><strong>尽量少的重复代码。</strong></li>
+<li><strong>清晰的注释与命名。</strong></li>
+<li><strong>每个类最好体现单一职能原则。</strong></li>
+<li><strong>良好的继承体系与实现方案。</strong></li>
+</ol>
+<p>这样的回答必然没有错，关键是好何做到这一点。当然处于菜鸟的我，实在也不知道具体的方案，所以我才写下这篇文章来记录我的学习收获。<br>有时我们会发现一个系统里的代码设计总结会有很多设计模式的影子。而且很有可能最核心的架构设计与通信机制只有到了一种主要的设计模式。如接下来说的这个Travelbc。当然Travelbc的优秀之处包含但不限于这些。。。。。吧啦吧啦吧啦。。。。。</p>
+<p>#Observer<br>适用于那些状态与数据需要满足迁一发而动全身的需求，即定义对象间的一种一对多的依赖关系,当一个对象的状态发生改变时,所有依赖于它的对象都得到通知并被自动更新。<br>首先这个里说到几个关键词：</p>
+<ol>
+<li><strong>一对多</strong>：如何表达这种依赖关系。一个目标可以受多个观察者监控，一个观察者可以监控多个目标。</li>
+<li><strong>通知</strong>：如何通知。</li>
+<li><strong>自动更新</strong>：调用父类方法更新，无需关心子类类型。</li>
+</ol>
+<p>##举个栗子<br><img src="http://img1.tbcdn.cn/L1/461/1/910db606b7d0235343d3e9bc199500e0bfad39e6.png" alt=""></p>
+<p>这是一个非常适合用于观察者模式学习的现实例子。许多系统在处理应用数据与界面显示时都会进行前端与后端的解藕。用于描述界面的类和用于定义数据的类都可以进行独自的复用。当然他们也可以一起工作。一个表格对象和一个柱状图对象本质上是使用不同表示形式描述同一个应用数据的信息。因为表格对象和柱状图对象互相并不知道对方的存在，所以也就大大的提高了每种界面显示的类的可重用性。当用户改变表格中的信息时，柱状图能立即反映这一变化，当然反过来也是如此。<br>这里也说明了，当数据对象发生改变时，就应该立即通知依赖于这个数据对象的显示类。当然数据对象不应该限制界面显示类的数量，也不应该知道有哪些显示类在依赖于这个数据对象。</p>
+<p>Observer模式描述了如何建立这种关系经，这一模式中的关键对象是目标（subject）和观察者（observer）.subject指的就是本例中的数据对象。而observer就是指的是负责显示的类。</p>
+<p>这种交互也称为发布-订阅（publish-subscribe）。目标是通知的发布者，它发出通知时并不需知道谁是它的观察者。可以有任意数目的观察者订阅并接受通知。</p>
+<p>很多系统中也全使用一种叫做事件驱动模型的架构。这个架构与观察者也有很多关联，<a href="http://blog.csdn.net/zuoxiaolong8810/article/details/9081079" target="_blank" rel="external">传送门</a></p>
+<p>##结构与角色</p>
+<p><img src="http://img1.tbcdn.cn/L1/461/1/38ffb8e599a359cbd9298dbffd5bdff443167b6a.png" alt=""></p>
+<p><strong>Subject(目标)</strong></p>
+<ul>
+<li>目标要拥有观察者的数组。可以有任意多个观察者观察同一个目标。</li>
+<li>提供注册和删除观察者对象的接口</li>
+</ul>
+<p><strong>Observer(观察者)</strong></p>
+<ul>
+<li>为那些在目标发生改变时需获得通知的对象定义一个更新接口</li>
+</ul>
+<p><strong>ConcreteSubject(具体目标)</strong></p>
+<ul>
+<li>将有关状态存入各ConcreteObserver对象。</li>
+<li>当它的状态发生改变时，向它的各个观察者发出通知。</li>
+</ul>
+<p><strong>ConcreteObserver(具体观察者)</strong></p>
+<ul>
+<li>实现Observer的更新接口实现，当目标发生变化时使状态与目标状态操持一致。</li>
+</ul>
+<p>##实现机制</p>
+<h3 id="目标与观察者之间的映射"><a href="#目标与观察者之间的映射" class="headerlink" title="目标与观察者之间的映射"></a>目标与观察者之间的映射</h3><p>一个目标对象跟踪它应通知的观察者的最简单的方法是显式地在目标中保存观察者的引用。然而，当目标很多而观察者较少时，这样存储可能代价太高。一个解决办法是用时间换空间，用一个关联查找机制（如hash表）来维护目标到观察者的映射，但另一方面，这一方法增加了访问观察者的开销。</p>
+<h3 id="观察多个目标"><a href="#观察多个目标" class="headerlink" title="观察多个目标"></a>观察多个目标</h3><p>当一个观察者依赖多个目标时而且需要针对不同的目标做不同的更新操作时，如一个表格对象的每一列的数据显示依赖于不同的数据源时，在这种情况下，必须扩展update接口以使观察者知道是哪一个目标送来的通知，从而作相应的改变。目标对象可以简单地将自己作为update操作的一个参数，让观察者知道就去检查哪一个目标。</p>
+<h3 id="是谁触发更新"><a href="#是谁触发更新" class="headerlink" title="是谁触发更新"></a>是谁触发更新</h3><ul>
+<li>由目标对象的状态设定操作在改变目标对象的状态后自动调用Notify.这种方法的优点是客户不需要记住要在目标对象上调用Notify,缺点是多个连续的操作会产生多次连接的更新，可能效率较底。</li>
+<li>让客户负责在适当的时候调用Notify.这样做的优点是客户可以在一系列的状态改变完成后再一次性地触发更新，避免了不必要的中间更新。缺点是给客户端增加了触发更新的责任，由于客户可能会忘记调用Nofity，这种方式较易出错。</li>
+</ul>
+<h3 id="在发出通知前确保目标的状态自身是一致的"><a href="#在发出通知前确保目标的状态自身是一致的" class="headerlink" title="在发出通知前确保目标的状态自身是一致的"></a>在发出通知前确保目标的状态自身是一致的</h3><p>原因是观察者在更新其状态的过程中需要查询目标的当前状态。<br>当Subject的子类调用继承的该项操作时，很容易无意中违反这条自身一致的准则。例如：</p>
+<p><img src="http://img4.tbcdn.cn/L1/461/1/64c33db3948f2684f19bc92b067cb374dee8de87.png" alt=""></p>
+<p>此时抽象的Subject中可以使用模板方法（Template Method）发送通知来使得Notify操作作为模板方法中的最后一个操作。这样当子类重定义了Subject的操作时，还可以保证对象的状态是自身一致的。</p>
+<h3 id="推拉模型"><a href="#推拉模型" class="headerlink" title="推拉模型"></a>推拉模型</h3><ul>
+<li>推模型</li>
+</ul>
+<p>目标向观察者发送关于改变的详细信息，而不管它们需要与否。</p>
+<ul>
+<li>拉模型</li>
+</ul>
+<p>目标除了最小通知外什么也不送出，而在此之后由观察者显式地向目标底询问细节。</p>
+<h3 id="显式的指定感兴趣的改变"><a href="#显式的指定感兴趣的改变" class="headerlink" title="显式的指定感兴趣的改变"></a>显式的指定感兴趣的改变</h3><p>你可以扩展目标的注册接口，让各观察注册为仅对特定事件感兴趣，以提高更新的效率。当一个事件发生时，目标仅通知那些已注册为对该事件感兴趣的观察者。</p>
+<pre><code>void Subject attach(Observer observer,String interest)
+</code></pre><p>此处interest指定感兴趣的事件。在通知时间，目标将这方面的改变作为update操作的一个参数提供给它的观察者。例如：</p>
+<pre><code>void Observer update(Subject subject,String interest)
+</code></pre><p>###封装复杂的更新语义<br>当目标和观察者间的依赖关系特别复杂时，可能需要一个维护这些关系的对象。我们称这样的对象为更改管理器（ChangeManager）.例如：如果一个操作涉及到对几个相互依赖的目标进行改动，就必须保证仅在所有的目标更改完毕后，才一次性地通知他们的观察者，而不是每个目标都通知观察者。</p>
+<p><strong>ChangeManager有三个责任</strong></p>
+<ul>
+<li>它将一个目标映射到它的观察者并提供一个接口来维护这个映射，这就不需要由目标来维护对其观察者的引用。</li>
+<li>根据一个目标的请求，它更新所有依赖于这个目标的观察者。</li>
+</ul>
+<p>##示例</p>
+<p>###Subject </p>
+<pre><code>public abstract class Citizen {
+
+List pols;
+
+String help = &quot;normal&quot;;
+
+public void setHelp(String help) {
+    this.help = help;
+}
+
+public String getHelp() {
+    return this.help;
+}
+
+abstract void sendMessage(String help);
+
+public void setPolicemen() {
+    this.pols = new ArrayList();
+}
+
+public void register(Policeman pol) {
+    this.pols.add(pol);
+}
+
+public void unRegister(Policeman pol) {
+    this.pols.remove(pol);
+}
+}
+</code></pre><p>###Observer </p>
+<pre><code>public interface Policeman {
+
+void action(Citizen ci);
+}
+</code></pre><p>###ConcreteSubject </p>
+<pre><code>public class HuangPuCitizen extends Citizen {
+
+public HuangPuCitizen(Policeman pol) {
+    setPolicemen();
+    register(pol);
+}
+
+public void sendMessage(String help) {
+    setHelp(help);
+    for(int i = 0; i &lt; pols.size(); i++) {
+        Policeman pol = pols.get(i);
+        //通知警察行动
+        pol.action(this);
+    }
+}
+}
+
+public class TianHeCitizen extends Citizen {
+
+public TianHeCitizen(Policeman pol) {
+    setPolicemen();
+    register(pol);
+}
+
+public void sendMessage(String help) {
+    setHelp(help);
+    for (int i = 0; i &lt; pols.size(); i++) {
+        Policeman pol = pols.get(i);
+        //通知警察行动
+        pol.action(this);
+    }
+}
+}
+</code></pre><p>###ConcreteObserver </p>
+<pre><code>public class HuangPuPoliceman implements Policeman {
+
+public void action(Citizen ci) {
+    String help = ci.getHelp();
+    if (help.equals(&quot;normal&quot;)) {
+        System.out.println(&quot;一切正常, 不用出动&quot;);
+    }
+    if (help.equals(&quot;unnormal&quot;)) {
+        System.out.println(&quot;有犯罪行为, 黄埔警察出动!&quot;);
+    }
+}
+}
+public class TianHePoliceman implements Policeman {
+
+public void action(Citizen ci) {
+    String help = ci.getHelp();
+    if (help.equals(&quot;normal&quot;)) {
+        System.out.println(&quot;一切正常, 不用出动&quot;);
+    }
+    if (help.equals(&quot;unnormal&quot;)) {
+        System.out.println(&quot;有犯罪行为, 天河警察出动!&quot;);
+    }
+}
+}
+</code></pre><p>###Test </p>
+<pre><code>public class Test{
+
+public static void main(String[] args) {
+    Policeman thPol = new TianHePoliceman();
+    Policeman hpPol = new HuangPuPoliceman();
+
+    Citizen citizen = new HuangPuCitizen(hpPol);
+    citizen.sendMessage(&quot;unnormal&quot;);
+    citizen.sendMessage(&quot;normal&quot;);
+
+    System.out.println(&quot;===========&quot;);
+
+    citizen = new TianHeCitizen(thPol);
+    citizen.sendMessage(&quot;normal&quot;);
+    citizen.sendMessage(&quot;unnormal&quot;);
+}
+}
+</code></pre><p>###result </p>
+<pre><code>有犯罪行为, 黄埔警察出动!
+一切正常, 不用出动
+===========
+一切正常, 不用出动
+有犯罪行为, 天河警察出动!
+</code></pre><p>#TravelBc&amp;Observer</p>
+<p><strong>连蒙带编，终于写到这，还好我没放弃！！！</strong></p>
+<p>##需求</p>
+<p>Travelbc相关部分的需求比较简单，当Travelbc接收到支付成功的消息后，会根据具体业务进行预约订单与预约记录的创建，由于预约订单与记录的创建或修改会导致一些诸如定时任务的创建，订单与预约状态的修改，Toc时间设置等等。完全符合Observer模式适用范围，因为Observer模式是实现这此逻辑的不二之选。</p>
+<p>##结构</p>
+<p><img src="http://img2.tbcdn.cn/L1/461/1/11bb8785681aaf33dd2282674e66ef6c7c5b1056.png" alt=""></p>
+<p>##流程</p>
+<p>整个流程就很清晰了，Subject会接收到支付成功的消息，接着会调用ChangeManager中的相应方法，ChangeManager中通过spring的bean注入方式注入Obersver列表。这些的obersver大多叫作XXXProcessor,ChangeManager就会负责Processor与管理工作与迭代通知操作。</p>
+<p>#总结</p>
+<p>Travelbc&amp;Observer部分分析的内容比较少，主要是因为Observer的内容介绍的比较多。如果能理解Observer模式应该就很容易理解Travelbc中的这块内容。但事实是我其实也没有深刻理解Observer模式，或者我可能会用他，但我不会扩展或升级他。<br>上面的内容有很多来自于书籍或网上教程，虽然我自己个人理解的内容相对少一点，但是我再次强调我现阶段写文章的目的是：</p>
+<p><strong>作为自己学习的笔记与总结</strong></p>
+<p><strong>方便大家在网上搜索出来快速了解</strong></p>
+<p>仅此而已</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/18/spi翻译/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/icon.png"
+               alt="欣明果果" />
+          <p class="site-author-name" itemprop="name">欣明果果</p>
+          <p class="site-description motion-element" itemprop="description">突然发现自己的偶像是灰太狼。。。。。。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标与观察者之间的映射"><span class="nav-number">1.</span> <span class="nav-text">目标与观察者之间的映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#观察多个目标"><span class="nav-number">2.</span> <span class="nav-text">观察多个目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#是谁触发更新"><span class="nav-number">3.</span> <span class="nav-text">是谁触发更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在发出通知前确保目标的状态自身是一致的"><span class="nav-number">4.</span> <span class="nav-text">在发出通知前确保目标的状态自身是一致的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推拉模型"><span class="nav-number">5.</span> <span class="nav-text">推拉模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显式的指定感兴趣的改变"><span class="nav-number">6.</span> <span class="nav-text">显式的指定感兴趣的改变</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">欣明果果</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>
