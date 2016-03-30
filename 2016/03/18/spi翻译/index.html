@@ -57,19 +57,16 @@
 
 
 
-<meta name="description" content="#序
-我所在的团队为航旅度假技术团队，度假有自己下单系统（travelbuy），最近travelbuy为更友好的支持各垂直业务的下单，引入了spi的机制，到底spi是什么，我也浏览了一些网上的文章，有了一个大致的了解。最简单的spi实现则为jdk的spi支持，下面我也尝试着翻译一篇非常简单的英文资料，虽然这篇资料用词简单，内容也很简单，但对于我一个四级刚及格的同学来说挑战也挺大的，不仅因为英语差，">
+<meta name="description" content="序我所在的团队为航旅度假技术团队，度假有自己下单系统（travelbuy），最近travelbuy为更友好的支持各垂直业务的下单，引入了spi的机制，到底spi是什么，我也浏览了一些网上的文章，有了一个大致的了解。最简单的spi实现则为jdk的spi支持，下面我也尝试着翻译一篇非常简单的英文资料，虽然这篇资料用词简单，内容也很简单，但对于我一个四级刚及格的同学来说挑战也挺大的，不仅因为英语差，而且">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spi翻译">
 <meta property="og:url" content="http://yoursite.com/2016/03/18/spi翻译/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#序
-我所在的团队为航旅度假技术团队，度假有自己下单系统（travelbuy），最近travelbuy为更友好的支持各垂直业务的下单，引入了spi的机制，到底spi是什么，我也浏览了一些网上的文章，有了一个大致的了解。最简单的spi实现则为jdk的spi支持，下面我也尝试着翻译一篇非常简单的英文资料，虽然这篇资料用词简单，内容也很简单，但对于我一个四级刚及格的同学来说挑战也挺大的，不仅因为英语差，">
-<meta property="og:updated_time" content="2016-03-18T14:13:02.644Z">
+<meta property="og:description" content="序我所在的团队为航旅度假技术团队，度假有自己下单系统（travelbuy），最近travelbuy为更友好的支持各垂直业务的下单，引入了spi的机制，到底spi是什么，我也浏览了一些网上的文章，有了一个大致的了解。最简单的spi实现则为jdk的spi支持，下面我也尝试着翻译一篇非常简单的英文资料，虽然这篇资料用词简单，内容也很简单，但对于我一个四级刚及格的同学来说挑战也挺大的，不仅因为英语差，而且">
+<meta property="og:updated_time" content="2016-03-30T14:14:12.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spi翻译">
-<meta name="twitter:description" content="#序
-我所在的团队为航旅度假技术团队，度假有自己下单系统（travelbuy），最近travelbuy为更友好的支持各垂直业务的下单，引入了spi的机制，到底spi是什么，我也浏览了一些网上的文章，有了一个大致的了解。最简单的spi实现则为jdk的spi支持，下面我也尝试着翻译一篇非常简单的英文资料，虽然这篇资料用词简单，内容也很简单，但对于我一个四级刚及格的同学来说挑战也挺大的，不仅因为英语差，">
+<meta name="twitter:description" content="序我所在的团队为航旅度假技术团队，度假有自己下单系统（travelbuy），最近travelbuy为更友好的支持各垂直业务的下单，引入了spi的机制，到底spi是什么，我也浏览了一些网上的文章，有了一个大致的了解。最简单的spi实现则为jdk的spi支持，下面我也尝试着翻译一篇非常简单的英文资料，虽然这篇资料用词简单，内容也很简单，但对于我一个四级刚及格的同学来说挑战也挺大的，不仅因为英语差，而且">
 
 
 
@@ -246,12 +243,8 @@
       
 
       
-        <p>#序</p>
-<p>我所在的团队为航旅度假技术团队，度假有自己下单系统（travelbuy），最近travelbuy为更友好的支持各垂直业务的下单，引入了spi的机制，到底spi是什么，我也浏览了一些网上的文章，有了一个大致的了解。最简单的spi实现则为jdk的spi支持，下面我也尝试着翻译一篇非常简单的英文资料，虽然这篇资料用词简单，内容也很简单，但对于我一个四级刚及格的同学来说挑战也挺大的，不仅因为英语差，而且我也是第一次翻译。翻译的不好大家多多包涵，非常有可能大家读这篇文章还不如读英语原文顺畅，但也不要打我，我也是想挑战一下自己吧。</p>
-<p>#正文</p>
-<p>###<a href="http://www.lordofthejars.com/2011/11/en-ti-puedo-ver-la-libertad-tu-me-haces.html" target="_blank" rel="external">原文</a></p>
-<p>###<strong>翻译</strong></p>
-<p>javadoc中ServiceLoader介绍说：服务通常是一系列接口或类。一个服务提供者则是一个服务的具体实现。</p>
+        <h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>我所在的团队为航旅度假技术团队，度假有自己下单系统（travelbuy），最近travelbuy为更友好的支持各垂直业务的下单，引入了spi的机制，到底spi是什么，我也浏览了一些网上的文章，有了一个大致的了解。最简单的spi实现则为jdk的spi支持，下面我也尝试着翻译一篇非常简单的英文资料，虽然这篇资料用词简单，内容也很简单，但对于我一个四级刚及格的同学来说挑战也挺大的，不仅因为英语差，而且我也是第一次翻译。翻译的不好大家多多包涵，非常有可能大家读这篇文章还不如读英语原文顺畅，但也不要打我，我也是想挑战一下自己吧。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h3 id="原文"><a href="#原文" class="headerlink" title="原文"></a><a href="http://www.lordofthejars.com/2011/11/en-ti-puedo-ver-la-libertad-tu-me-haces.html" target="_blank" rel="external">原文</a></h3><h3 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a><strong>翻译</strong></h3><p>javadoc中ServiceLoader介绍说：服务通常是一系列接口或类。一个服务提供者则是一个服务的具体实现。</p>
 <p>jdk6之后的版本提供了简单的加载Service-provider的基础实现。它是非常简单的，你不需要去理解在复杂系统中为你的应用实现插件的具体实现，在很多场景下你所实现的服务能被其他的模块系统所自动引用。</p>
 <p>我真正喜欢Jdk Services的原因是你的服务一定没有依赖任何类。另外你只需要把jar文件放到classpath下就可以注册一个新的服务实现，其他不需要做任何事情。</p>
 <p>现在我会解释我们将要实现的服务，然后我会展示如何去编写它。</p>
@@ -335,11 +328,10 @@
 <p>对于那此使用Spring的人来说，Services也被三种不同的FactoryBeans支持：ServiceFactoryBean, ServiceListFactoryBean, ServiceLoaderFactoryBean.</p>
 <p>正如我在这个帖子开始时说的，如果你想创建一个简单插件系统，JDK Services 是一个简单的（但功能强大）方案。在我看来JDK Services已经足够了，我从来没有更复杂的需求了。但在有些情况下你想要一个完全的插件实现方案，例如Eclipse插件或甚至是OSGI,你可以使用JPF.</p>
 <p>我希望你发现这个帖子有用，你现在知道（或者你可以还是不知道）了一个开发插件和播放模块的简单方案。</p>
-<p>###<strong>Code</strong></p>
-<p><a href="https://github.com/downloads/maggandalf/Blog-Examples/reader.zip" target="_blank" rel="external">Main Project</a></p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a><strong>Code</strong></h3><p><a href="https://github.com/downloads/maggandalf/Blog-Examples/reader.zip" target="_blank" rel="external">Main Project</a></p>
 <p><a href="https://github.com/downloads/maggandalf/Blog-Examples/csvDec.zip" target="_blank" rel="external">Comma-Separated Values Service </a></p>
 <p><a href="https://github.com/downloads/maggandalf/Blog-Examples/tsvDec.zip" target="_blank" rel="external">Tab-Separated Values Service </a></p>
-<p>#总结<br>废话不多说，直接over了。。。。。再会！！！</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>废话不多说，直接over了。。。。。再会！！！</p>
 
       
     </div>
@@ -363,16 +355,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/18/软件设计原则/" rel="next" title="软件设计原则">
-                <i class="fa fa-chevron-left"></i> 软件设计原则
+              <a href="/2016/03/18/listener&travelbc/" rel="next" title="listener&travelbc">
+                <i class="fa fa-chevron-left"></i> listener&travelbc
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/18/listener&travelbc/" rel="prev" title="listener&travelbc">
-                listener&travelbc <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/18/软件设计原则/" rel="prev" title="软件设计原则">
+                软件设计原则 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -485,7 +477,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文"><span class="nav-number">2.0.1.</span> <span class="nav-text">原文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#翻译"><span class="nav-number">2.0.2.</span> <span class="nav-text">翻译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">2.0.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
