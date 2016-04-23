@@ -67,7 +67,7 @@
 <meta property="og:image" content="http://img1.tbcdn.cn/L1/461/1/38ffb8e599a359cbd9298dbffd5bdff443167b6a.png">
 <meta property="og:image" content="http://img4.tbcdn.cn/L1/461/1/64c33db3948f2684f19bc92b067cb374dee8de87.png">
 <meta property="og:image" content="http://img2.tbcdn.cn/L1/461/1/11bb8785681aaf33dd2282674e66ef6c7c5b1056.png">
-<meta property="og:updated_time" content="2016-03-30T14:15:44.117Z">
+<meta property="og:updated_time" content="2016-04-23T08:34:45.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="listener&travelbc">
 <meta name="twitter:description" content="序这段时间由于做旅行机票的项目，其中涉及到Travelbc系统的定制，对travelbc进行了一点点很小的改动。所谓Travelbc（travel book center）指是航旅度假业务中预约订单数据处理后台中心。这样的改动也给我了一次了解TravelBc代码的机会，给我感触最大的是核心框架的搭建有很特别优秀的设计。为什么我接触的系统设计都那么好？一是因为架构确实好，二是因为我的有很多值得我学习">
@@ -256,6 +256,7 @@
 <li><strong>良好的继承体系与实现方案。</strong></li>
 </ol>
 <p>这样的回答必然没有错，关键是好何做到这一点。当然处于菜鸟的我，实在也不知道具体的方案，所以我才写下这篇文章来记录我的学习收获。<br>有时我们会发现一个系统里的代码设计总结会有很多设计模式的影子。而且很有可能最核心的架构设计与通信机制只有到了一种主要的设计模式。如接下来说的这个Travelbc。当然Travelbc的优秀之处包含但不限于这些。。。。。吧啦吧啦吧啦。。。。。</p>
+<a id="more"></a>
 <h1 id="Observer"><a href="#Observer" class="headerlink" title="Observer"></a>Observer</h1><p>适用于那些状态与数据需要满足迁一发而动全身的需求，即定义对象间的一种一对多的依赖关系,当一个对象的状态发生改变时,所有依赖于它的对象都得到通知并被自动更新。<br>首先这个里说到几个关键词：</p>
 <ol>
 <li><strong>一对多</strong>：如何表达这种依赖关系。一个目标可以受多个观察者监控，一个观察者可以监控多个目标。</li>
@@ -455,12 +456,16 @@ public static void main(String[] args) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/03/18/UML类图关系符号/" rel="next" title="UML类图关系符号">
+                <i class="fa fa-chevron-left"></i> UML类图关系符号
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/18/软件设计原则/" rel="prev" title="软件设计原则">
-                软件设计原则 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/18/优秀的程序员都在用Google/" rel="prev" title="程序员都在用google">
+                程序员都在用google <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -529,7 +534,7 @@ public static void main(String[] args) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -539,7 +544,7 @@ public static void main(String[] args) {
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
